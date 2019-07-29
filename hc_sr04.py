@@ -49,23 +49,27 @@ def main():
   ## 時間請至少>=1秒
   # pub_data(self, *data)
   # pub_loc(lat=None, lon=None)
-  while True:
-    GPIO.output(GPIO_TRIGGER, True)
-    time.sleep(0.00001)
-    GPIO.output(GPIO_TRIGGER, False)
-    start = time.time()
-    while GPIO.input(GPIO_ECHO)==0:
+
+  try:
+    while True:
+      GPIO.output(GPIO_TRIGGER, True)
+      time.sleep(0.00001)
+      GPIO.output(GPIO_TRIGGER, False)
       start = time.time()
-    while GPIO.input(GPIO_ECHO)==1:
-      stop = time.time()
+      while GPIO.input(GPIO_ECHO)==0:
+        start = time.time()
+      while GPIO.input(GPIO_ECHO)==1:
+        stop = time.time()
 
 
-    t = stop - start
-    d = t * 34300 / 2
-    print("D = %.1f" % d)
-    sensor1.pub_data(d)
-    time.sleep(10)
-
+      t = stop - start
+      d = t * 34300 / 2
+      print("D = %.1f" % d)
+      sensor1.pub_data(d)
+      time.sleep(10)
+  except:
+    print("exit...")
+    GPIO.cleanup()
 
 if __name__ == '__main__':
   main()
