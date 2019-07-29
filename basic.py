@@ -22,6 +22,7 @@ def main():
 
   ## 使用專案精靈
   ## 請將上方sensor1 .....最前方加入#，並將下方ck.json改成同資料夾內剛下載的json名稱
+  ## 一個sensor對應一個json檔案
   #sensor1 = chtiot_mqtt(jsonFile="ck.json")
 
   ## 下方為mqtt的subscribe功能，當伺服器有新的資料，訂閱可以隨時被通知並輸出到終端機上
