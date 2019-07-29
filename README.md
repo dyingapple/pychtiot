@@ -2,10 +2,16 @@
 
 
 ## 環境
-- Raspbian version 10 (buster)
-- Python 2.7.16
-  - paho-mqtt 1.14.0
+- RaspberryPi 3B v1.2
+  - Raspbian version 10 (buster)
+  - Python 2.7.16
+    - paho-mqtt 1.14.0
+- HC-SR04 (@尚未補完)
+- DHT22 (@尚未補完)
 
+## 範例程式
+- basic.py 僅有簡單的資料發送接收功能，提供使用者做基本的連線測試
+- (@尚未補完)
 
 ## 開啟專案
 1. 請先連上大平台並登入(https://iot.cht.com.tw/iot/quickstart)
@@ -17,19 +23,20 @@
 
 
 ## 程式執行步驟
-1. 文字介面使用者請輸入`git clone https://github.com/dyingapple/pychtiot.git`，圖形介面使用者請至@@@@網頁並下載zip解壓縮
+1. 文字介面使用者請輸入`git clone https://github.com/dyingapple/pychtiot.git`，圖形介面使用者請至網頁https://github.com/dyingapple/pychtiot/archive/master.zip下載後解壓縮
 
-2. `pip -r requirements.txt`
+2. 請使用終端機進入此資料夾內輸入`pip -r requirements.txt`安裝相關套件
 
-3. 修改basic.py或@@@@，並選擇更改金鑰方式
+3. 修改basic.py或(@尚未補完)，並選擇更改金鑰方式
    a) 下載JSON檔案，並請按照Code內註解指示變更內容
    b) 將取得的金鑰分別填入CK, deviceId, sensorId中，並註解....mqtt(jsonFile=...)那行
 
 4. 基本測試：執行`python basic.py` 或在圖形介面中點擊`basic.py`兩下
-   若已接上特定感應器做測試：在文字介面執行`python @@@@` 或在圖形介面中滑鼠點擊@@@@兩下
+   若已接上特定感應器做測試：在文字介面執行`python xxxx.py` 或在圖形介面中滑鼠點擊xxxx兩下
 
 5. 更進一步：修改basic.py或pychtiot/pychtiot.py檔案做更進一步的功能(增加GPIO等等)
 
-
-
-
+## 平台相關資料
+大平台MQTT subscribe/publish https://iot.cht.com.tw/iot/developer/mqtt
+大平台其他進階範例程式 https://iot.cht.com.tw/iot/developer/download
+RPi + DHT22 + pm2.5 詳細作法 https://iot.cht.com.tw/iot/developer/resources/iot/download/DeviceConnMgt/Raspberry_Connect_IoT_Example.pdf
