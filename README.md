@@ -21,8 +21,8 @@
 
 2. `pip -r requirements.txt`
 
-3. 修改basic.py或@@@@，並選擇輸入金曜方式
-   a) 請按照Code內註解指示變更內容
+3. 修改basic.py或@@@@，並選擇更改金鑰方式
+   a) 下載JSON檔案，並請按照Code內註解指示變更內容
    b) 將取得的金鑰分別填入CK, deviceId, sensorId中，並註解....mqtt(jsonFile=...)那行
 
 4. 基本測試：執行`python basic.py` 或在圖形介面中點擊`basic.py`兩下
