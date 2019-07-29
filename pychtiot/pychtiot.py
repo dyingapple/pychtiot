@@ -35,8 +35,9 @@ class chtiot_mqtt:
     if self.sid is None:
         print("Please recheck your sensorId")
         raise SystemExit(0)
+
     self.client = mqtt.Client(client_id=client_id)
-    self.client.username_pw_set(CK,CK)
+    self.client.username_pw_set(self.CK,self.CK)
     self.conn = self.client.connect(server)
     self.client.loop_start()
     self.data = []
