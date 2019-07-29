@@ -7,12 +7,10 @@
   - Python 2.7.16
     - paho-mqtt 1.14.0
 - HC-SR04
-- DHT22 (@尚未補完)
 
 ## 範例程式
 - basic.py 僅有簡單的資料發送接收功能，提供使用者做基本的連線測試
 - hc_sr04.py 超音波感測器範例
-- (@尚未補完)
 
 ## 開啟專案
 1. 請先連上大平台並登入(https://iot.cht.com.tw/iot/quickstart)
@@ -21,7 +19,6 @@
 
 3. a) 新增完成後，請下載連結中的JSON檔案，複製進與Code同個檔案夾中
    b) 設定完專案後需要新增設備，以及在該設備底下新增感應器，並從編輯專案、編輯設備、編輯感測器中分別取得三個金鑰（專案、設備、感測器），此三組金鑰會在下面步驟使用到
-
 
 ## 程式執行步驟
 1. 文字介面使用者請輸入`git clone https://github.com/dyingapple/pychtiot.git`，圖形介面使用者請至網頁https://github.com/dyingapple/pychtiot/archive/master.zip下載後解壓縮
@@ -33,7 +30,7 @@
    b) 將取得的金鑰分別填入CK, deviceId, sensorId中，並註解....mqtt(jsonFile=...)那行
 
 4. 基本測試：執行`python basic.py` 或在圖形介面中點擊`basic.py`兩下
-   若已接上特定感應器做測試：在文字介面執行`python xxxx.py` 或在圖形介面中滑鼠點擊xxxx兩下
+   若已接上特定感應器做測試：在文字介面執行`sudo python xxxx.py` 或在圖形介面中滑鼠點擊xxxx兩下
 
 5. 更進一步：修改basic.py或hc_sr04.py或pychtiot/pychtiot.py檔案做更進一步的功能(增加GPIO等等)
 
