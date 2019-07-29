@@ -6,11 +6,12 @@
   - Raspbian version 10 (buster)
   - Python 2.7.16
     - paho-mqtt 1.14.0
-- HC-SR04 (@尚未補完)
+- HC-SR04
 - DHT22 (@尚未補完)
 
 ## 範例程式
 - basic.py 僅有簡單的資料發送接收功能，提供使用者做基本的連線測試
+- hc_sr04.py 超音波感測器範例
 - (@尚未補完)
 
 ## 開啟專案
@@ -34,9 +35,9 @@
 4. 基本測試：執行`python basic.py` 或在圖形介面中點擊`basic.py`兩下
    若已接上特定感應器做測試：在文字介面執行`python xxxx.py` 或在圖形介面中滑鼠點擊xxxx兩下
 
-5. 更進一步：修改basic.py或pychtiot/pychtiot.py檔案做更進一步的功能(增加GPIO等等)
+5. 更進一步：修改basic.py或hc_sr04.py或pychtiot/pychtiot.py檔案做更進一步的功能(增加GPIO等等)
 
 ## 平台相關資料
-大平台MQTT subscribe/publish https://iot.cht.com.tw/iot/developer/mqtt
-大平台其他進階範例程式 https://iot.cht.com.tw/iot/developer/download
-RPi + DHT22 + pm2.5 詳細作法 https://iot.cht.com.tw/iot/developer/resources/iot/download/DeviceConnMgt/Raspberry_Connect_IoT_Example.pdf
+- 大平台MQTT subscribe/publish https://iot.cht.com.tw/iot/developer/mqtt
+- 大平台其他進階範例程式 https://iot.cht.com.tw/iot/developer/download
+- RPi + DHT22 + pm2.5 詳細作法 https://iot.cht.com.tw/iot/developer/resources/iot/download/DeviceConnMgt/Raspberry_Connect_IoT_Example.pdf
