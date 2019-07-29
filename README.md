@@ -2,9 +2,9 @@
 
 
 ## 環境
-Raspbian version 10 (buster)
-Python 2.7.16
- - paho-mqtt 1.14.0
+- Raspbian version 10 (buster)
+- Python 2.7.16
+  - paho-mqtt 1.14.0
 
 
 ## 開啟專案
@@ -17,7 +17,7 @@ Python 2.7.16
 
 
 ## 程式執行步驟
-1. 文字介面使用者請輸入`git clone ...`，圖形介面使用者請至@@@@網頁並下載zip解壓縮
+1. 文字介面使用者請輸入`git clone https://github.com/dyingapple/pychtiot.git`，圖形介面使用者請至@@@@網頁並下載zip解壓縮
 
 2. `pip -r requirements.txt`
 
