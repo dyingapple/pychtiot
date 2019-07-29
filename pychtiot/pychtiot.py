@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import os
 import json
 import uuid
 import time
@@ -10,19 +11,30 @@ import paho.mqtt.client as mqtt
 server = "iot.cht.com.tw"
 client_id = str(uuid.uuid1())
 
-'''
-class chtiot_rest:
-  def __init__(self, CK, deviceId, sensorId):
-    self.CK = CK
-    self.deviceId = deviceId
-    self.sensorId = sensorId
-'''
 
 class chtiot_mqtt:
-  def __init__(self, CK, deviceId, sensorId):
+  def __init__(self, CK=None, deviceId=None, sensorId=None, jsonFile=None):
     self.CK = CK
     self.did = deviceId
     self.sid = sensorId
+    if jsonFile is not None:
+        try:
+            f = json.loads(open(jsonFile).read())
+            print(f)
+            self.CK = f["CK"]
+            self.did = f["deviceId"]
+            self.sid = f["sensorId"]
+        except:
+            print("jsonfile read failed")
+    if self.CK is None:
+        print("Please recheck your CK key")
+        raise SystemExit(0)
+    if self.did is None:
+        print("Please recheck your deviceId")
+        raise SystemExit(0)
+    if self.sid is None:
+        print("Please recheck your sensorId")
+        raise SystemExit(0)
     self.client = mqtt.Client(client_id=client_id)
     self.client.username_pw_set(CK,CK)
     self.conn = self.client.connect(server)
@@ -49,9 +61,10 @@ class chtiot_mqtt:
       value = {}
       value["value"] = self.data
       value["id"] = self.sid
+      time.sleep(1)
       payload = json.dumps([value])
       i = self.client.publish("/v1/device/"+self.did+"/"+service , payload=payload)
-      time.sleep(period)
+      time.sleep(period-1)
 
   def pub_loc(self, lat=None, lon=None):
     self.lat = lat
