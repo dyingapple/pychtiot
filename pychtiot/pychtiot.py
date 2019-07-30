@@ -62,14 +62,28 @@ class chtiot_mqtt:
       value = {}
       value["value"] = self.data
       value["id"] = self.sid
+      value["lat"] = self.lat
+      value["lon"] = self.lon
+      if self.time == None:
+        self.time = datetime.datetime.utcnow().isoformat()
+      value["time"] = self.time
       time.sleep(1)
       payload = json.dumps([value])
       i = self.client.publish("/v1/device/"+self.did+"/"+service , payload=payload)
       time.sleep(period-1)
 
   def pub_loc(self, lat=None, lon=None):
-    self.lat = lat
-    self.lon = lon
+    if isinstance(lat, float) or isinstance(lat, int):
+      self.lat = lat
+    else:
+      print("lat is not a number")
+    if isinstance(lon, float) or isinstance(lon, int):
+      self.lon = lon
+    else:
+      print("lon is not a number")
+
+  def pub_time(self, t=datetime.datetime.utcnow().isoformat()):
+    self.time = t
 
   def pub_data(self, *data):
     dataCount = len(data)
