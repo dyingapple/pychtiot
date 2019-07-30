@@ -29,14 +29,15 @@ def main():
   ## 下方為mqtt的subscribe功能，當伺服器有新的資料，訂閱可以隨時被通知並輸出到終端機上
   #sensor_name.sub()         
   sensor1.sub()
-  
+  sensor1.sub(service="heartbeat") 
   ## pub是mqtt中的publish，在IoT大平台中，可利用mqtt做幾項功能的推送，其中下方的service(不填寫)預設為rawdata
   ## 時間請至少>=1秒
   ##   .pub( seconds, [service=rawdata] )
   ##      seconds: time period between two data sent
-  ##      service: rawdata, heartbeat, cmd, ack
+  ##      service: rawdata, heartbeat
 
   sensor1.pub(30)
+  sensor1.pub(5, service="heartbeat")
 
   ## 只要將資料傳入pub_data，剩下會自己傳送至大平台
   ## 下方以隨機生成兩個數字當作資料，並寫入pub_data函式中以供為下次更新提交給伺服器的資料
@@ -45,17 +46,19 @@ def main():
   # pub_data(self, *data)
   # pub_loc(lat=None, lon=None)
   # pub_time(datetime.datetime.now().isoformat()) 
-  while True:
-    random1 = random.randrange(1000, 4000) / 100.00
-    random2 = random.randrange(1000, 4000) / 100.00
-    random3 = "atatat"
-    random4 = {"dict":"ok"}
-    random5 = ["list", "ok", 123123]
-    sensor1.pub_loc(lat=25.0459854, lon=121.5150668)
-    sensor1.pub_time(datetime.datetime.now().isoformat())
-    sensor1.pub_data(random1, random2, random3, random4, random5)
-    time.sleep(5)
-
+  try:
+    while True:
+      random1 = random.randrange(1000, 4000) / 100.00
+      random2 = random.randrange(1000, 4000) / 100.00
+      random3 = "atatat"
+      random4 = {"dict":"ok"}
+      random5 = ["list", "ok", 123123]
+      sensor1.pub_loc(lat=25.0459854, lon=121.5150668)
+      sensor1.pub_time(datetime.datetime.now().isoformat())
+      sensor1.pub_data(random1, random2, random3, random4, random5)
+      time.sleep(5)
+  except:
+    print("exit...")
 
 if __name__ == '__main__':
   main()
