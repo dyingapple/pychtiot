@@ -6,6 +6,7 @@ import uuid
 import time
 import random
 import thread
+import datetime
 import paho.mqtt.client as mqtt
 
 server = "iot.cht.com.tw"
@@ -62,11 +63,18 @@ class chtiot_mqtt:
       value = {}
       value["value"] = self.data
       value["id"] = self.sid
-      value["lat"] = self.lat
-      value["lon"] = self.lon
-      if self.time == None:
-        self.time = datetime.datetime.utcnow().isoformat()
-      value["time"] = self.time
+      try:
+        value["lat"] = self.lat
+      except:
+        pass
+      try:
+        value["lon"] = self.lon
+      except:
+        pass
+      try:
+        value["time"] = self.time
+      except:
+        value["time"] = datetime.datetime.now().isoformat()
       time.sleep(1)
       payload = json.dumps([value])
       i = self.client.publish("/v1/device/"+self.did+"/"+service , payload=payload)
@@ -82,7 +90,7 @@ class chtiot_mqtt:
     else:
       print("lon is not a number")
 
-  def pub_time(self, t=datetime.datetime.utcnow().isoformat()):
+  def pub_time(self, t=datetime.datetime.now().isoformat()):
     self.time = t
 
   def pub_data(self, *data):

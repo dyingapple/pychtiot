@@ -3,6 +3,7 @@
 
 import time
 import random
+import datetime
 from pychtiot import chtiot_mqtt
 
 '''
@@ -37,17 +38,21 @@ def main():
 
   sensor1.pub(30)
 
+  ## 只要將資料傳入pub_data，剩下會自己傳送至大平台
   ## 下方以隨機生成兩個數字當作資料，並寫入pub_data函式中以供為下次更新提交給伺服器的資料
   ## 範例中迴圈以5秒一次產生假的RPi感測器資料，並在每次間隔30秒的時候跟伺服器更新資料
   ## 時間請至少>=1秒
   # pub_data(self, *data)
   # pub_loc(lat=None, lon=None)
+  # pub_time(datetime.datetime.now().isoformat()) 
   while True:
     random1 = random.randrange(1000, 4000) / 100.00
     random2 = random.randrange(1000, 4000) / 100.00
     random3 = "atatat"
-    random4 = {"qq":"bb"}
-    random5 = ["list1", 123123]
+    random4 = {"dict":"ok"}
+    random5 = ["list", "ok", 123123]
+    sensor1.pub_loc(lat=25.0459854, lon=121.5150668)
+    sensor1.pub_time(datetime.datetime.now().isoformat())
     sensor1.pub_data(random1, random2, random3, random4, random5)
     time.sleep(5)
 

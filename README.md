@@ -6,7 +6,13 @@
   - Raspbian version 10 (buster)
   - Python 2.7.16
     - paho-mqtt 1.14.0
-- HC-SR04
+- HC-SR04 (超音波感測器)
+
+## 第一次上手
+1. 在第一次使用RaspberryPi時須注意自己有沒有一些套件（如git, python, pip等等)
+
+2. 確認電路：感測器的電壓和電流，RaspberryPi的腳位(可在文字介面CLI中下`gpio readall`)
+
 
 ## 範例程式
 - basic.py 僅有簡單的資料發送接收功能，提供使用者做基本的連線測試
