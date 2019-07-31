@@ -24,13 +24,14 @@ def main():
   ## 使用專案精靈
   ## 請將上方sensor1 .....最前方加入#，並將下方ck.json改成同資料夾內剛下載的json名稱
   ## 一個sensor對應一個json檔案
-  #sensor1 = chtiot_mqtt(jsonFile="ck.json")
+  sensor1 = chtiot_mqtt(jsonFile="ck.json")
 
   ## 下方為mqtt的subscribe功能，當伺服器有新的資料，訂閱可以隨時被通知並輸出到終端機上
   #sensor_name.sub()         
   sensor1.sub()
   sensor1.sub(service="heartbeat") 
-  ## pub是mqtt中的publish，在IoT大平台中，可利用mqtt做幾項功能的推送，其中下方的service(不填寫)預設為rawdata
+  ## pub是mqtt中的publish，在IoT大平台中，可利用mqtt做幾項功能的推送
+  ## 其中下方的service(不填寫)預設為rawdata
   ## 時間請至少>=1秒
   ##   .pub( seconds, [service=rawdata] )
   ##      seconds: time period between two data sent
@@ -50,12 +51,13 @@ def main():
     while True:
       random1 = random.randrange(1000, 4000) / 100.00
       random2 = random.randrange(1000, 4000) / 100.00
-      random3 = "atatat"
+      random3 = "this_is_a_string"
       random4 = {"dict":"ok"}
       random5 = ["list", "ok", 123123]
       sensor1.pub_loc(lat=25.0459854, lon=121.5150668)
       sensor1.pub_time(datetime.datetime.now().isoformat())
-      sensor1.pub_data(random1, random2, random3, random4, random5)
+      #sensor1.pub_data(random1, random2, random3, random4, random5)
+      sensor1.pub_data(random1)
       time.sleep(5)
   except:
     print("exit...")
